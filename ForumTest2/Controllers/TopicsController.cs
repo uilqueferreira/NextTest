@@ -52,6 +52,7 @@ namespace ForumTest2.Controllers
         {
             if (ModelState.IsValid)
             {
+                topic.Creator = (int)System.Web.HttpContext.Current.Session["IdLogin"];
                 topic.CreationDate = DateTime.Now;
                 db.Topics.Add(topic);
                 db.SaveChanges();
@@ -73,6 +74,11 @@ namespace ForumTest2.Controllers
             if (topic == null)
             {
                 return HttpNotFound();
+            }
+            if (topic.Creator != (int)System.Web.HttpContext.Current.Session["IdLogin"])
+            {
+                ModelState.AddModelError("", "Not allowed!");
+                return RedirectToAction("Index");
             }
             ViewBag.Creator = new SelectList(db.ApplicationUsers, "Id", "Email", topic.Creator);
             return View(topic);
@@ -107,6 +113,11 @@ namespace ForumTest2.Controllers
             if (topic == null)
             {
                 return HttpNotFound();
+            }
+            if (topic.Creator != (int)System.Web.HttpContext.Current.Session["IdLogin"])
+            {
+                ModelState.AddModelError("", "Not allowed!");
+                return RedirectToAction("Index");
             }
             return View(topic);
         }

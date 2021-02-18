@@ -196,18 +196,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TopicController222.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102131256329_FORUMTEST.cs" />
-    <Compile Include="Migrations\202102131256329_FORUMTEST.designer.cs">
-      <DependentUpon>202102131256329_FORUMTEST.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102131309306_FORUMTEST2.cs" />
-    <Compile Include="Migrations\202102131309306_FORUMTEST2.designer.cs">
-      <DependentUpon>202102131309306_FORUMTEST2.cs</DependentUpon>
+    <Compile Include="Migrations\202102181336073_FORUM.cs" />
+    <Compile Include="Migrations\202102181336073_FORUM.designer.cs">
+      <DependentUpon>202102181336073_FORUM.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -258,6 +253,7 @@
     <Content Include="Views\Topics\Edit.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,11 +272,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102131256329_FORUMTEST.resx">
-      <DependentUpon>202102131256329_FORUMTEST.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102131309306_FORUMTEST2.resx">
-      <DependentUpon>202102131309306_FORUMTEST2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102181336073_FORUM.resx">
+      <DependentUpon>202102181336073_FORUM.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

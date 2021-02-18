@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Forum Test";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="container" style="text-align:center">
+    <div class="row" style="margin-top:10px">
+        @if (Session["FirstName"] != null)
+        {
+            <p><h3>Bem vindo ao sistema</h3> <h1>@Session["FirstName"].ToString()  @Session["LastName"].ToString()</h1></p>
+        }
+    </div>
+</div>

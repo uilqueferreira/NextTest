@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -16,6 +17,12 @@ namespace ForumTest2.Controllers
         {
             ViewBag.ReturnUrl = returnURL;
             return View(new ApplicationUser());
+        }
+
+        // GET: Accounts/Create
+        public ActionResult Create()
+        {
+            return View();
         }
 
         /// <param name="login"></param>
@@ -47,6 +54,7 @@ namespace ForumTest2.Controllers
                                 }
                                 Session["FirstName"] = vLogin.FirstName;
                                 Session["LastName"] = vLogin.LastName;
+                                Session["IdLogin"] = vLogin.Id;
                                 return RedirectToAction("Index", "Home");
                             }
                             else
@@ -69,6 +77,27 @@ namespace ForumTest2.Controllers
                 }
             }
             return View(login);
+        }
+
+        // POST: Accounts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,Email,Pass,Active,Profile,FirstName,LastName")] ApplicationUser applicationUser)
+        {
+            if (ModelState.IsValid)
+            {
+                using (ManagerContext db = new ManagerContext())
+                {
+                    db.ApplicationUsers.Add(applicationUser);
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("Login");
+            }
+
+            return View(applicationUser);
         }
     }
 }
